@@ -1,0 +1,17 @@
+Shell Script files:
+cifar_workflow.sh is a file used to mostly run experiments related
+
+Python files:
+cifar_subset.py 
+used to split have a smaller subset of data for cifar-10
+
+C++ files:
+cifar.cc
+A c++ file used to compute the kernel values for cifar dataset
+
+To run the file
+./a.out [output_file_path] [input_file_path] [size]
+
+
+Folder: data
+data folder contains all of the .txt files for the original dataset
