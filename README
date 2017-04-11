@@ -9,9 +9,18 @@ C++ files:
 cifar.cc
 A c++ file used to compute the kernel values for cifar dataset
 
+submit_job.sh
+submit job to SDSC cluster for running kernel functions
+example usage: 
+qsub submit_job.sh
+it will execute: /home/rqiu/spring/c/cifar /home/rqiu/spring/data/cifar_5000_data_kernel.txt /home/rqiu/spring/data/cifar_5000_subset_data.txt 5000
+
+
 To run the file
 ./a.out [output_file_path] [input_file_path] [size]
 
 
 Folder: data
-data folder contains all of the .txt files for the original dataset
+data folder contains all of the .txt files for the original dataset (not included in the repo)
+
+
