@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 
     const int n=32;
     int start_line = 0;
-    int end_line = atoi(argv[3]);
+    int end_line = atoi(argv[4]);
     if(end_line == 0){
         printf("specified number of line is 0, Exit\n");
         return 0;
@@ -78,14 +78,13 @@ int main(int argc, char* argv[])
             for(int i = 0; i < 32; i++){
                 for(int j = 0; j < 32; j++){
                     A[i][j][k] = atof(v[index].c_str());
-         //           printf("i: %d, j: %d, k: %d A: %f\n",i,j,k,A[i][j][k]);
                     index++;
                 }
             }
         }
         kAB = computeLeKernelRGB(A, A);
         printf("kAB = %f\n", kAB);
-        ifstream file2(argv[2]);
+        ifstream file2(argv[3]);
         string str2;
         while(getline(file2, str2)){
             vector<string> v2;
@@ -104,6 +103,7 @@ int main(int argc, char* argv[])
             outfile << " ";
         }
         outfile << "\n";
+        cout << "one iteration took " << (clock() - start) / (double)CLOCKS_PER_SEC;
     }
     duration = (clock() - start) / (double)CLOCKS_PER_SEC;
     cout << "it takes " << duration << endl;
