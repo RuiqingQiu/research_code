@@ -48,7 +48,7 @@ f.write("\tdouble k, u, v;\n")
 f.write("\tfor (int i=0; i<n0; i++){for (int j=0; j<n0; j++){double *a = A[i][j];double *b = B[i][j];k0[i][j] = a[0]*b[0] + a[1]*b[1] + a[2]*b[2]; u0[i][j] = a[0]*a[0] + a[1]*a[1] + a[2]*a[2];v0[i][j] = b[0]*b[0] + b[1]*b[1] + b[2]*b[2];}}")
 
 def writeConv(num):
-    string = ""
+    string = "\t //Convolutional Layer\n"
     string += "for (int i=0; i<n" + str(num) + "; i++){"
     string += "for (int j=0; j<n" + str(num) + "; j++){"
     string += "double kk=0, uu=0, vv=0;"
@@ -63,7 +63,7 @@ def writeConv(num):
     return string
 
 def writeSub(num):
-    string = ""
+    string = "\t //Subsampling by 2\n"
     string += "for (int i=0; i<n" + str(num) + "; i++){"
     string += "for (int j=0; j<n" + str(num) + "; j++){"
     string += "int x = 2*i;"
@@ -74,7 +74,7 @@ def writeSub(num):
     return string
 
 def writeFully(num):
-    string = ""
+    string = "\t //Fully Connected Layer\n"
     string += "k = u = v = 0;"
     string += "for (int i=0; i<n" + str(num-1) + "; i++){"
     string += "for (int j=0; j<n" + str(num-1) + "; j++){"

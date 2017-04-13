@@ -10,7 +10,6 @@ print 'Argument List:', str(sys.argv)
 data_file_path = sys.argv[1]
 label_file_path = sys.argv[2]
 
-'''
 f = open(sys.argv[3], 'w')
 
 label = []
@@ -29,4 +28,3 @@ with open(data_file_path) as file:
             index += 1
         f.write("\n")
         count += 1
-'''

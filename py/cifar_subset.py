@@ -1,10 +1,10 @@
 # File path for the whole cifar dataset
-cifar_whole_data_path = '../../cifar_train_c_2.txt'
+cifar_whole_data_path = '/oasis/tscc/scratch/rqiu/cifar_train_c.txt'
 cifar_whole_label_path = '../../cifar_train_label.txt'
 
 # A subset of 5000 data points
-size = 1000
-test_size = 100
+size = 5000
+test_size = 500
 
 # File path for saving the subset
 cifar_subset_data_path = '../data/cifar_' + str(size) + '_subset_data.txt'

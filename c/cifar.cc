@@ -31,8 +31,8 @@ int main(int argc, char* argv[])
     }
 
     const int n=32;
-    int start_line = 0;
-    int end_line = atoi(argv[4]);
+    int start_line = atoi(argv[4]);
+    int end_line = atoi(argv[5]);
     if(end_line == 0){
         printf("specified number of line is 0, Exit\n");
         return 0;
