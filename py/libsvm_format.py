@@ -1,4 +1,3 @@
-
 # Example usage: python libsvm_format.py ../data/cifar_5000_data_kernel.txt ../data/cifar_5000_subset_label.txt ../data/cifar_5000_libsvm_kernel.txt
 
 import sys
