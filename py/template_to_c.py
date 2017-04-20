@@ -28,6 +28,9 @@ f = open('tmp.c', 'w')
 header = "#include <float.h>\n#include <math.h>\n#include \"computeLeKernelRGB.h\"\n#include <stdio.h>\n"
 f.write(header)
 
+define="#define MAX(a,b) ((a) > (b) ? a : b)\n#define MIN(a,b) ((a) < (b) ? a : b)\n"
+f.write(define)
+
 # the kernel function
 f.write("double computeLeKernelRGB(double ***A, double ***B, int nFullyConnectedLayer)\n{\n")
 count = 0
@@ -73,6 +76,17 @@ def writeSub(num):
     string += "v" + str(num) + "[i][j] = v" + str(num-1) + "[x][y] + v" + str(num-1) + "[x+1][y] + v" + str(num-1) + "[x][y+1] + v" + str(num-1) + "[x+1][y+1];}}\n\n"
     return string
 
+def writeMax(num):
+    string = "\t //Maxpooling by 2\n"
+    string += "for (int i=0; i<n" + str(num) + "; i++){"
+    string += "for (int j=0; j<n" + str(num) + "; j++){"
+    string += "int x = 2*i;"
+    string += "int y = 2*j;"
+    string += "k" + str(num) + "[i][j] =MAX(MAX(MAX(k" + str(num-1) + "[x][y], k" + str(num-1) + "[x+1][y]), k" + str(num-1) + "[x][y+1]), k" + str(num-1) + "[x+1][y+1]);"
+    string += "u" + str(num) + "[i][j] =MAX(MAX(MAX(u" + str(num-1) + "[x][y], u" + str(num-1) + "[x+1][y]), u" + str(num-1) + "[x][y+1]), u" + str(num-1) + "[x+1][y+1]);"
+    string += "v" + str(num) + "[i][j] =MAX(MAX(MAX(v" + str(num-1) + "[x][y], v" + str(num-1) + "[x+1][y]), v" + str(num-1) + "[x][y+1]), v" + str(num-1) + "[x+1][y+1]);}}\n\n"
+    return string
+
 def writeFully(num):
     string = "\t //Fully Connected Layer\n"
     string += "k = u = v = 0;"
@@ -94,6 +108,8 @@ for s in structure:
         f.write(writeSub(count))
     elif s == 'FULLY':
         f.write(writeFully(count))
+    elif s == 'MAX':
+        f.write(writeMax(count))
     else:
         print "error, structure unknown"
     count += 1

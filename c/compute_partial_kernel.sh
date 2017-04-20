@@ -1,6 +1,6 @@
 #!/bin/sh
 #PBS -q hotel
-#PBS -l walltime=20:00:00
+#PBS -l walltime=168:00:00
 file_num=1
 executable="/home/rqiu/spring/c/cifar"
 train_file="/oasis/tscc/scratch/rqiu/cifar_train_c.txt"
