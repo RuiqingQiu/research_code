@@ -24,3 +24,8 @@ Folder: data
 data folder contains all of the .txt files for the original dataset (not included in the repo)
 
 
+Folder: dataset
+contains the datasets for the experiments, formatted as follow:
+
+mnist: MNIST dataset
+cifar10: Cifar-10 dataset
