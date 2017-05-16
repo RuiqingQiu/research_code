@@ -98,7 +98,11 @@ int main(int argc, char* argv[])
                     }
                 }
             }
-            kAB = computeLeKernelRGB(A,B);
+            clock_t begin = clock();
+            for(int a = 0; a < 1000; a++){
+                kAB = computeLeKernelRGB(A,B);
+            }
+            cout << (clock() - begin) / (double)CLOCKS_PER_SEC << endl;
             outfile << setprecision(12) << kAB;
             outfile << " ";
         }
