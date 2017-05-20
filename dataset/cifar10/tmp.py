@@ -124,8 +124,8 @@ def computeLeKernelRGB(A, B):
             a = tmp1[i][j]
             b = tmp2[i][j]
             k0[i][j] = a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
-            u0[i][j] = a[0]*a[0] + a[1]*a[1] + a[2]*a[2];
-            v0[i][j] = b[0]*b[0] + b[1]*b[1] + b[2]*b[2];
+            u0[i][j] = a[0]*a[0] + a[1]*a[1] + a[2]*a[2]
+            v0[i][j] = b[0]*b[0] + b[1]*b[1] + b[2]*b[2]
 
     #end = time.time()
     #print "0 : " + str(end - start)

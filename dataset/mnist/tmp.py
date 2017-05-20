@@ -189,10 +189,9 @@ print a
 #    print a
 for a in test_data[0].reshape(32,32).tolist():
     print a
-exit()
 
-training_size = 100 #Number of training data
-test_size = 100 #Number of test data
+training_size = 1000 #Number of training data
+test_size = 1000 #Number of test data
 
 # Map function for compute custom kernel
 def map_func(a):
@@ -208,6 +207,7 @@ file_name = 'precomputed2017-05-09T12:30:17.483407.npy'
 
 
 # Compute custom kernel for training
+'''
 if load_from_file:
     precomputed = np.load(file_name)
 else:
@@ -217,19 +217,21 @@ else:
     end = time.time()
     print end - start
     np.save('precomputed' + datetime.datetime.now().isoformat() + '.npy', precomputed)
+'''
+
 #clf = svm.SVC(kernel='linear')
-clf = svm.SVC(kernel='precomputed')
-print precomputed
-#clf.fit(np.array(train_data)[:training_size], train_label[:training_size])
-clf.fit(precomputed, train_label[:training_size])
+#clf = svm.SVC(kernel='precomputed')
+clf = svm.SVC(kernel='rbf')
+clf.fit(np.array(train_data)[:training_size], train_label[:training_size])
+#clf.fit(precomputed, train_label[:training_size])
 print "fit done"
 
 # Compute custom kernel for testing
-precomputed_test = pool.map(map_func, test_data[:test_size])
-#predict = clf.predict(np.array(test_data[:test_size]))
+#precomputed_test = pool.map(map_func, test_data[:test_size])
+predict = clf.predict(np.array(test_data[:test_size]))
 
-predict = clf.predict(precomputed_test)
-print precomputed_test[0]
+#predict = clf.predict(precomputed_test)
+#print precomputed_test[0]
 
 print test_label[:100]
 error = 0

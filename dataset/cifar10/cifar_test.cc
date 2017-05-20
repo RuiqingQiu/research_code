@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
     for(int i = 0; i < number_of_images; i++){
         outfile << label[i] << " " << "0:" << (i+1) << " ";
         for(int j = 0; j < number_of_images; j++){
-            kAB = computeLeKernelRGB(B[i], A[j]);
+            kAB = computeLeKernelRGB(B[i], A[j], 5);
             outfile <<setprecision(12) << (j+1) << ":" << kAB << " ";
         }
         outfile << "\n";
